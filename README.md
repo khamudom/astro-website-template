@@ -1,4 +1,116 @@
-# Astro Starter Kit: Minimal
+# Astro Website Template with Design System
+
+A modern, customizable website template built with Astro that includes a comprehensive design system for quick customization.
+
+## Features
+
+- 🎨 Comprehensive design system with CSS custom properties
+- 📱 Responsive design with mobile-first approach
+- 🚀 Built with Astro for optimal performance
+- 🎯 Easy to customize and extend
+- 📦 Includes common components and utilities
+
+## Design System
+
+The template includes a design system that can be easily customized by modifying the CSS custom properties in `src/styles/design-tokens.css`. The design system includes:
+
+### Colors
+
+- Primary and secondary color palettes
+- Neutral colors (50-900)
+- Semantic colors (success, warning, error, info)
+
+### Typography
+
+- Font families
+- Font sizes
+- Font weights
+- Line heights
+
+### Spacing
+
+- Consistent spacing scale
+- Margin and padding utilities
+
+### Components
+
+- Buttons
+- Container
+- Grid system
+- Utility classes
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Customizing the Design System
+
+To customize the design system, modify the CSS custom properties in `src/styles/design-tokens.css`. For example, to change the primary color:
+
+```css
+:root {
+  --color-primary: #your-color-here;
+}
+```
+
+### Available Custom Properties
+
+#### Colors
+
+- `--color-primary`
+- `--color-primary-light`
+- `--color-primary-dark`
+- `--color-secondary`
+- `--color-secondary-light`
+- `--color-secondary-dark`
+- And more...
+
+#### Typography
+
+- `--font-family-base`
+- `--font-family-heading`
+- `--font-size-*` (xs through 5xl)
+- `--font-weight-*` (normal, medium, semibold, bold)
+- `--line-height-*` (tight, normal, relaxed)
+
+#### Spacing
+
+- `--spacing-*` (0 through 16)
+
+#### Other
+
+- `--radius-*` (border radius)
+- `--shadow-*` (box shadows)
+- `--transition-*` (animation durations)
+- `--z-index-*` (z-index layers)
+
+## Project Structure
+
+```
+src/
+├── styles/
+│   ├── design-tokens.css    # Design system tokens
+│   └── base.css            # Base styles using tokens
+├── components/             # Reusable components
+├── layouts/               # Page layouts
+└── pages/                # Astro pages
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT License - feel free to use this template for your projects!
 
 ```sh
 npm create astro@latest -- --template minimal

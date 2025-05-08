@@ -1,16 +1,98 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Welcome to Our Website">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">Welcome to Our Website</h1>
+      <p class="hero__subtitle">
+        A modern website built with Astro and a beautiful design system
+      </p>
+      <div class="hero__cta">
+        <Button href="/about" size="lg">Learn More</Button>
+        <Button href="/contact" variant="secondary" size="lg">Contact Us</Button
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Features</h2>
+      <div
+        class="grid"
+        style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));"
+      >
+        <Card title="Modern Design">
+          <p>
+            Built with a comprehensive design system that's easy to customize
+            and extend.
+          </p>
+        </Card>
+        <Card title="Fast Performance">
+          <p>
+            Leveraging Astro's static site generation for optimal performance.
+          </p>
+        </Card>
+        <Card title="Responsive">
+          <p>
+            Fully responsive design that works on all devices and screen sizes.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: var(--spacing-16) 0;
+    text-align: center;
+    background-color: var(--color-neutral-50);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-5xl);
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: var(--spacing-4);
+    justify-content: center;
+  }
+
+  .features {
+    padding: var(--spacing-16) 0;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-12);
+  }
+
+  @media (max-width: 768px) {
+    .hero__cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__title {
+      font-size: var(--font-size-4xl);
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>

@@ -1,0 +1,214 @@
+---
+// Add any necessary imports or props here
+---
+
+<header>
+  <nav>
+    <div class="nav-container">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <span>Logo</span>
+        </a>
+      </div>
+
+      <!-- Navigation Items -->
+      <div class="nav-items">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+
+        <!-- Services Dropdown -->
+        <div class="dropdown">
+          <button class="dropdown-button">
+            Services
+            <svg class="dropdown-icon" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="/services/web-development">Web Development</a>
+            <a href="/services/mobile-apps">Mobile Apps</a>
+            <a href="/services/consulting">Consulting</a>
+          </div>
+        </div>
+
+        <a href="/contact">Contact</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-button">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Base styles */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo styles */
+  .logo a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+  }
+
+  /* Navigation items */
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-items a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-items a:hover {
+    color: #1e40af;
+  }
+
+  /* Dropdown styles */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+  }
+
+  .dropdown-button:hover {
+    color: #1e40af;
+  }
+
+  .dropdown-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    min-width: 12rem;
+    background-color: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4b5563;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #eff6ff;
+    color: #1e40af;
+    transform: translateX(4px);
+  }
+
+  /* Mobile menu button */
+  .mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: #4b5563;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .mobile-menu-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Navigation link animations */
+  .nav-items a {
+    position: relative;
+  }
+
+  .nav-items a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #1e40af;
+    transition: width 0.3s ease;
+  }
+
+  .nav-items a:hover::after {
+    width: 100%;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .nav-items {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: block;
+    }
+  }
+</style>

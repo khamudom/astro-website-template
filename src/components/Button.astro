@@ -1,0 +1,74 @@
+---
+interface Props {
+  variant?: "primary" | "secondary";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  class: className = "",
+} = Astro.props;
+
+const baseClass = "button";
+const variantClass = `button-${variant}`;
+const sizeClass = `button-${size}`;
+const classes = [baseClass, variantClass, sizeClass, className].join(" ");
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag class={classes} href={href}>
+  <slot />
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast) ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Variants */
+  .button-primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .button-primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .button-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+
+  .button-secondary:hover {
+    background-color: var(--color-secondary-dark);
+  }
+
+  /* Sizes */
+  .button-sm {
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .button-md {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-base);
+  }
+
+  .button-lg {
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-lg);
+  }
+</style>
