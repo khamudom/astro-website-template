@@ -1,0 +1,158 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Contact Us">
+  <section class="contact">
+    <div class="container">
+      <h1 class="contact__title">Contact Us</h1>
+      <p class="contact__subtitle">
+        Have a question or want to work together? Send us a message!
+      </p>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="your.email@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            required
+            placeholder="What is this about?"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows="6"
+            placeholder="Your message here..."></textarea>
+        </div>
+
+        <button type="submit" class="button button-primary button-lg"
+          >Send Message</button
+        >
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact {
+    padding: var(--spacing-16) 0;
+    background-color: var(--color-neutral-50);
+  }
+
+  .contact__title {
+    font-size: var(--font-size-4xl);
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+  }
+
+  .contact__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-8);
+    text-align: center;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: var(--spacing-8);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-6);
+  }
+
+  label {
+    display: block;
+    margin-bottom: var(--spacing-2);
+    color: var(--color-neutral-700);
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: var(--spacing-3);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s ease;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 2px var(--color-primary-100);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  @media (max-width: 768px) {
+    .contact__title {
+      font-size: var(--font-size-3xl);
+    }
+
+    .contact__subtitle {
+      font-size: var(--font-size-base);
+    }
+
+    .contact-form {
+      padding: var(--spacing-6);
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("contactForm");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData);
+
+    // Here you would typically send the data to your backend
+    console.log("Form submitted:", data);
+
+    // For now, we'll just show an alert
+    alert("Thank you for your message! We will get back to you soon.");
+    (e.target as HTMLFormElement).reset();
+  });
+</script>

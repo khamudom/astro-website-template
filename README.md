@@ -42,11 +42,19 @@ The template includes a design system that can be easily customized by modifying
 ## Getting Started
 
 1. Clone the repository
-2. Install dependencies:
+2. Run the setup script with your project name:
+   ```bash
+   npm run setup <your-project-name>
+   ```
+   This will:
+   - Rename the project folder (if needed)
+   - Update project name in configuration files
+   - Replace placeholders in templates
+3. Install dependencies:
    ```bash
    npm install
    ```
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm run dev
    ```

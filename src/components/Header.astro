@@ -1,48 +1,9 @@
 ---
-// Add any necessary imports or props here
+import Navigation from "./Navigation.astro";
 ---
 
 <header>
-  <nav>
-    <div class="nav-container">
-      <!-- Logo -->
-      <div class="logo">
-        <a href="/">
-          <span>Logo</span>
-        </a>
-      </div>
-
-      <!-- Navigation Items -->
-      <div class="nav-items">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-
-        <!-- Services Dropdown -->
-        <div class="dropdown">
-          <button class="dropdown-button">
-            Services
-            <svg class="dropdown-icon" viewBox="0 0 24 24">
-              <path d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="/services/web-development">Web Development</a>
-            <a href="/services/mobile-apps">Mobile Apps</a>
-            <a href="/services/consulting">Consulting</a>
-          </div>
-        </div>
-
-        <a href="/contact">Contact</a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="mobile-menu-button">
-        <svg viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-  </nav>
+  <Navigation />
 </header>
 
 <style>
@@ -54,6 +15,7 @@
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
   }
 
   nav {

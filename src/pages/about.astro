@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="About Us">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">About Us</h1>
+      <p class="hero__subtitle">Learn more about our mission and values</p>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-section">
+          <h2>Our Mission</h2>
+          <p>
+            We are dedicated to creating exceptional digital experiences that
+            help businesses and individuals achieve their goals. Our team
+            combines technical expertise with creative innovation to deliver
+            solutions that make a difference.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h2>Our Values</h2>
+          <ul>
+            <li>Excellence in everything we do</li>
+            <li>Innovation and continuous improvement</li>
+            <li>Client satisfaction and success</li>
+            <li>Collaboration and teamwork</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h2>Our Team</h2>
+          <p>
+            Our diverse team brings together expertise from various fields,
+            united by a common passion for creating outstanding digital
+            solutions. We believe in continuous learning and staying at the
+            forefront of technology.
+          </p>
+          <div class="cta-container">
+            <Button href="/contact" size="lg">Get in Touch</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: var(--spacing-16) 0;
+    text-align: center;
+    background-color: var(--color-neutral-50);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-5xl);
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .about-content {
+    padding: var(--spacing-16) 0;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: var(--spacing-12);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    padding: var(--spacing-8);
+    background-color: var(--color-neutral-50);
+    border-radius: var(--radius-lg);
+  }
+
+  .about-section h2 {
+    color: var(--color-neutral-900);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-2xl);
+  }
+
+  .about-section p {
+    color: var(--color-neutral-600);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-4);
+  }
+
+  .about-section ul {
+    list-style-type: disc;
+    margin-left: var(--spacing-6);
+    color: var(--color-neutral-600);
+  }
+
+  .about-section li {
+    margin-bottom: var(--spacing-2);
+  }
+
+  .cta-container {
+    margin-top: var(--spacing-8);
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-section:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero__title {
+      font-size: var(--font-size-4xl);
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>

@@ -1,0 +1,446 @@
+<nav aria-label="Main navigation">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/">
+        <span>LOGO</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <ul class="nav-list">
+      <li><a href="/">Home</a></li>
+      <li class="has-flyout" id="services-flyout">
+        <button
+          id="services-menu-button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="services-menu"
+          class="flyout-toggle"
+        >
+          Services
+          <svg class="dropdown-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="services-menu" class="flyout-menu" hidden>
+          <li><a href="/services/web-development">Web Development</a></li>
+          <li><a href="/services/mobile-apps">Mobile Apps</a></li>
+          <li><a href="/services/consulting">Consulting</a></li>
+        </ul>
+      </li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="mobile-menu-button"
+      id="mobile-menu-button"
+      aria-label="Open menu"
+    >
+      <svg viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="close-button" id="close-menu-button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <div class="mobile-nav-content">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <div class="mobile-dropdown">
+        <button
+          class="mobile-dropdown-button"
+          aria-expanded="false"
+          aria-controls="mobile-services-menu"
+        >
+          Services
+          <svg class="dropdown-icon" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-menu" id="mobile-services-menu" hidden>
+          <a href="/services/web-development">Web Development</a>
+          <a href="/services/mobile-apps">Mobile Apps</a>
+          <a href="/services/consulting">Consulting</a>
+        </div>
+      </div>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Base styles */
+  nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list > li {
+    position: relative;
+  }
+
+  .nav-list a,
+  .flyout-toggle {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav-list a:hover,
+  .flyout-toggle:hover,
+  .flyout-toggle:focus {
+    color: #1e40af;
+  }
+
+  .dropdown-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .flyout-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 12rem;
+    background: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    padding: 0.5rem 0;
+    list-style: none;
+  }
+
+  .flyout-menu[hidden] {
+    display: none;
+  }
+
+  .flyout-menu[aria-hidden="false"] {
+    display: block;
+  }
+
+  .flyout-menu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #4b5563;
+    transition: all 0.2s ease;
+  }
+
+  .flyout-menu li a:hover,
+  .flyout-menu li a:focus {
+    background-color: #eff6ff;
+    color: #1e40af;
+    outline: none;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: #4b5563;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .mobile-menu-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    z-index: 1200;
+    transition: right 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .mobile-nav-content {
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-content a {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav-content a:hover {
+    color: #1e40af;
+  }
+
+  .mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: #4b5563;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+  }
+
+  .mobile-dropdown-menu {
+    display: none;
+    padding-left: 1rem;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .mobile-dropdown-menu.open {
+    display: flex;
+  }
+
+  .mobile-dropdown-menu a {
+    font-size: 1.1rem;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: #4b5563;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    z-index: 1300;
+  }
+
+  .close-button:hover {
+    color: #1e40af;
+  }
+
+  .close-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .has-flyout:hover .flyout-menu,
+  .has-flyout:focus-within .flyout-menu {
+    display: block;
+  }
+
+  /* For testing: Uncomment to always show hamburger */
+  /* .mobile-menu-button { display: block !important; } */
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .nav-list {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileNav = document.querySelector(".mobile-nav");
+  const closeMenuButton = document.getElementById("close-menu-button");
+
+  const toggleMenu = () => {
+    mobileNav?.classList.toggle("open");
+  };
+
+  mobileMenuButton?.addEventListener("click", () => {
+    if (mobileNav) mobileNav.classList.add("open");
+    setTimeout(() => {
+      if (closeMenuButton) closeMenuButton.focus();
+    }, 100);
+  });
+
+  if (mobileMenuButton && mobileNav && closeMenuButton) {
+    mobileMenuButton.addEventListener("click", () => {
+      if (mobileNav) mobileNav.classList.add("open");
+      setTimeout(() => {
+        if (closeMenuButton) closeMenuButton.focus();
+      }, 100);
+    });
+    closeMenuButton.addEventListener("click", () => {
+      if (mobileNav) mobileNav.classList.remove("open");
+      setTimeout(() => {
+        if (mobileMenuButton) mobileMenuButton.focus();
+      }, 100);
+    });
+    closeMenuButton.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        if (mobileNav) mobileNav.classList.remove("open");
+        setTimeout(() => {
+          if (mobileMenuButton) mobileMenuButton.focus();
+        }, 100);
+      }
+    });
+  }
+
+  const button = document.getElementById("services-menu-button");
+  const menu = document.getElementById("services-menu");
+
+  function closeMenu() {
+    if (!button || !menu) return;
+    button.setAttribute("aria-expanded", "false");
+    menu.hidden = true;
+  }
+
+  function openMenu() {
+    if (!button || !menu) return;
+    button.setAttribute("aria-expanded", "true");
+    menu.hidden = false;
+    // Optionally, focus the first item
+    const firstLink = menu.querySelector("a");
+    if (firstLink) firstLink.focus();
+  }
+
+  if (button && menu) {
+    button.addEventListener("click", (e) => {
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    button.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+        button.focus();
+      } else if (e.key === "ArrowDown") {
+        if (!menu.hidden) {
+          const firstLink = menu.querySelector("a");
+          if (firstLink) firstLink.focus();
+        }
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node;
+      if (!button.contains(target) && !menu.contains(target)) {
+        closeMenu();
+      }
+    });
+
+    menu.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+        button.focus();
+      }
+    });
+  }
+
+  // --- Mobile dropdown as details-like ---
+  const mobileDropdownButton = document.querySelector(
+    ".mobile-dropdown-button"
+  );
+  const mobileDropdownMenu = document.getElementById("mobile-services-menu");
+  if (mobileDropdownButton && mobileDropdownMenu) {
+    mobileDropdownButton.addEventListener("click", () => {
+      const expanded =
+        mobileDropdownButton.getAttribute("aria-expanded") === "true";
+      mobileDropdownButton.setAttribute("aria-expanded", String(!expanded));
+      if (expanded) {
+        mobileDropdownMenu.hidden = true;
+        mobileDropdownMenu.classList.remove("open");
+      } else {
+        mobileDropdownMenu.hidden = false;
+        mobileDropdownMenu.classList.add("open");
+        // Optionally focus first link
+        const firstLink = mobileDropdownMenu.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
+    });
+    // Keyboard accessibility
+    mobileDropdownButton.addEventListener("keydown", (e) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === "Enter" || ke.key === " ") {
+        ke.preventDefault();
+        (mobileDropdownButton as HTMLButtonElement).click();
+      }
+    });
+  }
+</script>
