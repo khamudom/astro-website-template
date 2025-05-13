@@ -19,12 +19,17 @@ const currentFolder = path.basename(__dirname);
 const parentDir = path.dirname(__dirname);
 const newFolderPath = path.join(parentDir, projectName);
 
+// Store the working directory
+const workingDir = __dirname;
+
 if (currentFolder !== projectName) {
   try {
     fs.renameSync(__dirname, newFolderPath);
     console.log(
       `📁 Renamed folder from "${currentFolder}" to "${projectName}"`
     );
+    // Update the working directory to the new path
+    workingDir = newFolderPath;
   } catch {
     console.warn(
       "⚠️ Could not rename folder. Please rename it manually if needed."
@@ -50,7 +55,7 @@ const filesToProcess = [
 ];
 
 filesToProcess.forEach((file) => {
-  const fullPath = path.join(__dirname, file);
+  const fullPath = path.join(workingDir, file);
   if (fs.existsSync(fullPath)) {
     replaceInFile(fullPath);
     console.log(`✅ Processed: ${file}`);
