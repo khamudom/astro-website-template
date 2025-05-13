@@ -20,7 +20,7 @@ const parentDir = path.dirname(__dirname);
 const newFolderPath = path.join(parentDir, projectName);
 
 // Store the working directory
-const workingDir = __dirname;
+let workingDir = __dirname;
 
 if (currentFolder !== projectName) {
   try {
