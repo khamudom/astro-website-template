@@ -2,6 +2,8 @@
 
 A modern, customizable website template built with Astro that includes a comprehensive design system for quick customization.
 
+**Note:** I created this template to speed up my own development workflow by handling common boilerplate. It’s designed to be reusable, so feel free to use it as a starting point for your own projects.
+
 ## Features
 
 - 🎨 Comprehensive design system with CSS custom properties
